@@ -25,9 +25,19 @@ clone this repo
 
 ## On Mac or Linux machine
 
-Install Python and a package manager.
+Install Python and a package manager. 
+
+Install VS Code (here).
+Activate the 'code' extension here.
 
 We recommend either micromamba (setup instructions here) or mini-forge (setup here).
+
+Install mini-forge following these instructions.
+
+Check that 'conda' is available on your path.
+```bash
+which conda
+```
 
 Clone this repo and navigate into the dir:
 
@@ -66,6 +76,14 @@ Now you can launch Jupyter Lab.
 jupyter lab
 ```
 
+## Setup for Windows
+
+Install: 
+- Git for Windows
+- VS Code
+- Mini-forge
+
+Open VS Code, open a new gitbash terminal, run `conda init bash`
 
 
 # Working in Gitpod
