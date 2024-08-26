@@ -8,6 +8,65 @@
 
 <br>
 
+# Working from WEHI Ondemand service
+
+Go to ondemand.whi.edu.au
+
+You will need a HPC account to login: apply here
+
+Opend a Jupyter server session 
+
+Install the following packages
+
+clone this repo
+
+
+# Working locally
+
+## On Mac or Linux machine
+
+Install Python and a package manager.
+
+We recommend either micromamba (setup instructions here) or mini-forge (setup here).
+
+Clone this repo and navigate into the dir:
+
+```bash
+git clone ...
+cd python-novice-dataframes
+``
+
+Set up a python environment with the packages we will be using:
+
+### Micromamba
+
+Setup new micromamba environment.
+
+```bash
+# Create env and install packages from yml
+micromamba env create --name pandas-workshop --file environment.yml
+
+# Activate the environment
+micromamba activate pandas-workshop
+```
+
+### Or using Conda
+
+```bash
+# Create env and install packages from yml
+conda env create --name pandas-workshop --file environment.yml
+
+# Activate the environment
+conda activate pandas-workshop
+```
+
+Now you can launch Jupyter Lab.
+
+```bash
+jupyter lab
+```
+
+
 
 # Working in Gitpod
 
@@ -31,14 +90,3 @@ jupyter lab --NotebookApp.allow_origin='*' --NotebookApp.allow_remote_access=Tru
 **Note:** See other [gitpod settings](https://www.gitpod.io/docs/references/gitpod-cli#set) here.
 
 
-# Working locally
-
-Setup new micromamba environment.
-
-```bash
-# Create env and install packages from yml
-micromamba env create --name pandas-workshop --file environment.yml
-
-# Activate the environment
-micromamba activate pandas-workshop
-```
