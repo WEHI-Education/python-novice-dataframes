@@ -1,0 +1,29 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Init Gitpod Workspace
+    init: |
+      pip3 install -r requirements.txt
+      jupyter nbextension install --sys-prefix --py nbgrader
+      jupyter nbextension enable --sys-prefix --py nbgrader
+      jupyter labextension enable nbgrader
+      #conda install --yes -c bioconda bwa blast samtools --solver=libmamba
+      conda clean --all --yes
+    command: |
+      echo "Running: $GITPOD_WORKSPACE_URL"
+      echo "Call 'gogo w' to work on workshop material in Jupyter lab."
+
+ports:
+  - name: Jupyter Notebook
+    port: 8888
+    onOpen: open-browser
+
+vscode:
+  extensions:
+    - eamodio.gitlens
+    - janisdd.vscode-edit-csv
+    - mechatroner.rainbow-csv
+    - ms-python.python
+    - ms-python.debugpy
+    

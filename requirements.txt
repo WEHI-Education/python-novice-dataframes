@@ -1,0 +1,6 @@
+matplotlib
+nbgrader==0.8.5
+numpy
+pandas
+scipy
+seaborn
