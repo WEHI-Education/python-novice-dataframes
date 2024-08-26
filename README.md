@@ -29,3 +29,16 @@ jupyter lab --NotebookApp.allow_origin='*' --NotebookApp.allow_remote_access=Tru
 ```
 
 **Note:** See other [gitpod settings](https://www.gitpod.io/docs/references/gitpod-cli#set) here.
+
+
+# Working locally
+
+Setup new micromamba environment.
+
+```bash
+# Create env and install packages from yml
+micromamba env create --name pandas-workshop --file environment.yml
+
+# Activate the environment
+micromamba activate pandas-workshop
+```

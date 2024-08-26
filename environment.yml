@@ -1,0 +1,14 @@
+name: pandas-workshop
+channels:
+    - conda-forge
+    - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+    - matplotlib
+    - nbgrader==0.8.5
+    - numpy
+    - pandas
+    - scipy
+    - seaborn
