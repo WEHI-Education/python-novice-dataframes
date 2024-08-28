@@ -8,41 +8,15 @@
 
 <br>
 
-# Working from WEHI Ondemand service
-
-Go to ondemand.whi.edu.au
-
-You will need a HPC account to login: apply here
-
-Opend a Jupyter server session 
-
-Install the following packages
-
-clone this repo
-
-
 # Working locally
 
 ## On Mac or Linux machine
 
-Install Python and a package manager. 
-
-Install VS Code (here).
-Activate the 'code' extension here.
-
-We recommend either micromamba (setup instructions here) or mini-forge (setup here).
-
-Install mini-forge following these instructions.
-
-Check that 'conda' is available on your path.
-```bash
-which conda
-```
 
 Clone this repo and navigate into the dir:
 
 ```bash
-git clone ...
+git clone https://github.com/Adamtaranto/python-novice-dataframes.git
 cd python-novice-dataframes
 ``
 
@@ -70,6 +44,12 @@ conda env create --name pandas-workshop --file environment.yml
 conda activate pandas-workshop
 ```
 
+### Or using pip
+
+```bash
+pip install matplotlib numpy pandas scipy seaborn jupyterlab
+```
+
 Now you can launch Jupyter Lab.
 
 ```bash
@@ -78,12 +58,13 @@ jupyter lab
 
 ## Setup for Windows
 
-Install: 
-- Git for Windows
-- VS Code
-- Mini-forge
-
-Open VS Code, open a new gitbash terminal, run `conda init bash`
+1. [Install GitBash](https://wehi-education.github.io/git-novice/#installing-git)
+2. [Install VS Code](https://code.visualstudio.com/download)
+    If you are using VS Code on a windows machine you will also need to [set your default shell as "GitBash"](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#_git-bash-on-windows).
+3. Install [miniforge3](https://conda-forge.org/miniforge/)
+4. Open a GitBash shell and run this command to enable Conda: `~/miniforge3/Scripts/conda.exe init bash` 
+5. From a new GitBash shell use `conda` to install packages:
+`conda install -c conda-forge jupyterlab pandas numpy matplotlib seaborn scipy`
 
 
 # Working in Gitpod
