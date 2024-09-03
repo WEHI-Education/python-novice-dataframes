@@ -84,6 +84,37 @@ Launch Jupyter Lab.
 jupyter lab
 ```
 
+# Working on WEHI Ondemand
+
+You can launch a in interactive Jupyter Lab session on the WEHI HPC (Milton) via Ondemand.
+
+You must have a Milton HPC account and a VAST scratch workspace set up before using this option.
+
+- Sign in to WEHI [Ondemand](https://ondemand.hpc.wehi.edu.au/).
+- From Apps select Jupyter
+- Under the option "Extra Jupyter arguments" enter: `--notebook-dir=/vast/scratch/users/$USER`  
+- Open the Jupyter session. From the menu bar select `View >> Open JupyterLab`
+
+To install packages in a Jupyter session running on Milton you will need to install into a target location that is visible from the notebook.
+
+```bash
+# Define user package location
+from os import environ
+username = environ["USER"]
+pkgdir = f"/vast/scratch/users/{username}/workshop-pkgs"
+
+# Prepend PYTHONPATH
+import sys
+sys.path.insert(0, pkgdir)
+
+# Install package
+!pip install --target $pkgdir pandas
+
+# Package should now be visible
+import pandas
+```
+
+
 # Working in Gitpod
 
 Click the Gitpod button at the top of this README to launch a gitpod workspace with all the required software pre-installed. 
