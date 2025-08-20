@@ -2,10 +2,6 @@
   <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" align="left" height="20"/>
 </a> 
 
-<a href="https://gitpod.io/#https://github.com/Adamtaranto/python-novice-dataframes">
-  <img src="https://gitpod.io/button/open-in-gitpod.svg" align="right" height="35"/>
-</a>
-
 <br>
 
 # Working locally
@@ -21,25 +17,12 @@
 Clone this repo and navigate into the dir:
 
 ```bash
-git clone https://github.com/Adamtaranto/python-novice-dataframes.git
-cd python-novice-dataframes
+git clone https://github.com/Adamtaranto/python-novice-dataframes.git && cd python-novice-dataframes
 ```
 
 Set up a python environment with the packages we will be using:
 
-### Micromamba
-
-Setup new micromamba environment.
-
-```bash
-# Create env and install packages from yml
-micromamba env create --name pandas-workshop --file environment.yml
-
-# Activate the environment
-micromamba activate pandas-workshop
-```
-
-### Or using Conda
+### Using Conda
 
 ```bash
 # Create env and install packages from yml
@@ -47,17 +30,21 @@ conda env create --name pandas-workshop --file environment.yml
 
 # Activate the environment
 conda activate pandas-workshop
+
 ```
+
+Note: If you are using micromamba just ruplace `conda` with `micromamba` in the commands.
 
 ### Or using pip
 
 ```bash
-pip install matplotlib numpy pandas scipy seaborn jupyterlab
+pip install matplotlib numpy pandas scipy seaborn jupyterlab ipykernel
 ```
 
-Now you can launch Jupyter Lab.
+Now you can open the notebook `workshop/Pandas.ipynb` in VS Code or in Jupyter Lab.
 
 ```bash
+# Launch Jupyter lab
 jupyter lab
 ```
 
@@ -68,72 +55,102 @@ jupyter lab
     If you are using VS Code on a windows machine you will also need to [set your default shell as "GitBash"](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#_git-bash-on-windows).
 3. Install [miniforge3](https://conda-forge.org/miniforge/)
 4. Open a GitBash shell and run this command to enable Conda: `~/miniforge3/Scripts/conda.exe init bash` 
-5. From a new GitBash shell use `conda` to install packages:
-`conda install -c conda-forge jupyterlab pandas numpy matplotlib seaborn scipy`
-
-Clone this repo and navigate into the dir:
+5. From a *new* GitBash shell clone this repo and navigate into the dir:
 
 ```bash
-git clone https://github.com/Adamtaranto/python-novice-dataframes.git
-cd python-novice-dataframes
+git clone https://github.com/Adamtaranto/python-novice-dataframes.git && cd python-novice-dataframes
 ```
 
-Launch Jupyter Lab.
+6. Use conda to install create a new env with our packages.
+   `conda env create --name pandas-workshop --file environment.yml`
 
-```bash
-jupyter lab
-```
+8. Activate the environment.
+   `conda activate pandas-workshop`
+
+9. Launch Jupyter Lab.
+   `jupyter lab`
+
 
 # Working on WEHI Ondemand
 
 You can launch a in interactive Jupyter Lab session on the WEHI HPC (Milton) via Ondemand.
 
-You must have a Milton HPC account and a VAST scratch workspace set up before using this option.
-
-- Sign in to WEHI [Ondemand](https://ondemand.hpc.wehi.edu.au/).
-- From Apps select Jupyter
-- Under the option "Extra Jupyter arguments" enter: `--notebook-dir=/vast/scratch/users/$USER`  
-- Open the Jupyter session. From the menu bar select `View >> Open JupyterLab`
-
-To install packages in a Jupyter session running on Milton you will need to install into a target location that is visible from the notebook.
-
-```bash
-# Define user package location
-from os import environ
-username = environ["USER"]
-pkgdir = f"/vast/scratch/users/{username}/workshop-pkgs"
-
-# Prepend PYTHONPATH
-import sys
-sys.path.insert(0, pkgdir)
-
-# Install package
-!pip install --target $pkgdir pandas
-
-# Package should now be visible
-import pandas
-```
+You must have a Milton HPC account and a VAST scratch workspace set up before using this option. [Request access here](https://support.wehi.edu.au/support/catalog/items/134).
 
 
-# Working in Gitpod
+## Step 1: Setup Micromamba to manage environments
 
-Click the Gitpod button at the top of this README to launch a gitpod workspace with all the required software pre-installed. 
-
-If you have a paid Gitpod account you can increase the timout limit on your workspace. 
-Otherwise you will need to restart the workspace periodically.
+- Sign in to WEHI [Ondemand](https://ondemand.hpc.wehi.edu.au/)
+- From `Clusters` select `>_Slurm WEHI Shell Access`
 
 ```bash
-# Increase gitpod timeout setting
-gp timeout set 6h
+# Load micromamba
+module load micromamba/latest
+
+# Set up channels
+micromamba config prepend channels conda-forge
+micromamba config prepend channels bioconda
+
+# Store environments and downloaded packages in your SCRATCH directory
+micromamba config append pkgs_dirs /vast/scratch/users/$USER/condapkgs
+micromamba config append envs_dirs /vast/scratch/users/$USER/condaenvs
+
+# Format the environment prompt
+micromamba config set env_prompt "({name}) "
+
+# Add micromamba to your .bashrc so it is activated for new shell sessions
+micromamba shell init --shell bash --root-prefix=~/micromamba
+
+# Verify config settings are correct
+micromamba config list
 ```
 
-Manually start Jupyter session
+For more information on working with conda/micromamba on Milton see our [sharepoint page](https://wehieduau.sharepoint.com/sites/rc2/SitePages/Conda-on-Milton.aspx?web=1)
+
+## Step 2: Clone this repository onto Milton and create env
+
+- Sign in to WEHI [Ondemand](https://ondemand.hpc.wehi.edu.au/)
+- From `Clusters` select `>_Slurm WEHI Shell Access`
 
 ```bash
-# Launch jupyter-lab
-jupyter lab --NotebookApp.allow_origin='*' --NotebookApp.allow_remote_access=True --NotebookApp.token='' --NotebookApp.password='' --no-browser --port=8888
+# Load Git
+module load git
+
+# Navigate to your SCRATCH dir and clone this repository
+cd /vast/scratch/users/$USER
+git clone https://github.com/WEHI-Education/python-novice-dataframes.git && cd python-novice-dataframes
+
+# Create a new environment using the `environment.yml` file in this repo
+micromamba env create -f environment.yml
+
+# Clean up package tarballs
+micromamba clean --all
 ```
 
-**Note:** See other [gitpod settings](https://www.gitpod.io/docs/references/gitpod-cli#set) here.
+Finally, we need to create a new ipykernel that uses our environment
+
+```bash
+# Check that you can activate the env
+micromamba activate pandas-workshop
+
+# Create the ipykernel
+python -m ipykernel install --user --name pandas-workshop --display-name "Python (pandas-workshop)"
+```
+
+## Step 3: Launch Jupyter via Ondemand
+
+- Sign in to WEHI [Ondemand](https://ondemand.hpc.wehi.edu.au/)
+- From `Apps` select `Jupyter`
+
+Launch an interactive Jupyter notebook session using these settings
+
+- Partition: `regular`
+- Notebook Path: `/vast/scratch/users/$USER/python-novice-dataframes/workshop/Pandas.ipynb `
+- Extra Jupyter arguments: `--notebook-dir=/vast/scratch/users/$USER`
+- Runtime hours: 6
+
+Open the Jupyter session. 
+
+For more information on using conda/micromamba environments with Jupyter on Milton [see our sharepoint page](https://wehieduau.sharepoint.com/sites/rc2/SitePages/Jupyter-Open-OnDemand.aspx).
 
 
