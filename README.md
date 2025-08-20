@@ -17,7 +17,7 @@
 Clone this repo and navigate into the dir:
 
 ``` bash
-git clone https://github.com/Adamtaranto/python-novice-dataframes.git && cd python-novice-dataframes
+git clone https://github.com/WEHI-Education/python-novice-dataframes.git && cd python-novice-dataframes
 ```
 
 Set up a python environment with the packages we will be using:
@@ -26,7 +26,7 @@ Set up a python environment with the packages we will be using:
 
 ``` bash
 # Create env and install packages from yml
-conda env create --name pandas-workshop --file environment.yml
+conda env create -f environment.yml
 
 # Activate the environment
 conda activate pandas-workshop
@@ -56,7 +56,7 @@ jupyter lab
 5.  From a *new* GitBash shell clone this repo and navigate into the dir:
 
 ``` bash
-git clone https://github.com/Adamtaranto/python-novice-dataframes.git && cd python-novice-dataframes
+git clone https://github.com/WEHI-Education/python-novice-dataframes.git && cd python-novice-dataframes
 ```
 
 6.  Use conda to install create a new env with our packages. `conda env create --name pandas-workshop --file environment.yml`
