@@ -2,6 +2,11 @@
   <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" align="left" height="20"/>
 </a> 
 
+
+<a href="https://colab.research.google.com/github/WEHI-Education/python-novice-dataframes/blob/main/workshop/Pandas.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" align="right" height="20"/>
+</a> 
+
 <br>
 
 # Working locally
