@@ -8,9 +8,7 @@
 
 ## On Mac or Linux machine
 
-1.  Install a conda based package manager. We recommend **Miniforge3** if you are setting up for the first time.
-    -   [miniforge3](https://conda-forge.org/miniforge/)
-    -   [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html)
+1.  Install a `conda` based package manager. We recommend [Miniforge3](https://conda-forge.org/miniforge/) if you are setting up for the first time.
 2.  [Install VS Code](https://code.visualstudio.com/download) or [Positron](https://positron.posit.co/download.html).
 
 
