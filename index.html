@@ -276,7 +276,7 @@ WEHI Education
 <h2>Series and DataFrame</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="c2062a6e" class="cell" data-execution_count="2">
+<div id="986a65d8" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> pd.Series(</span>
 <span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">68</span>, <span class="dv">83</span>, <span class="dv">112</span>],</span>
 <span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"alice"</span>, <span class="st">"bob"</span>, <span class="st">"charles"</span>],</span>
@@ -290,7 +290,7 @@ Name: weight, dtype: int64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="c90b2568" class="cell" data-execution_count="3">
+<div id="5db563d4" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight"</span>: [<span class="dv">68</span>, <span class="dv">83</span>, <span class="dv">112</span>],</span>
 <span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"height"</span>: [<span class="dv">172</span>, <span class="dv">181</span>, <span class="dv">185</span>],</span>
@@ -355,20 +355,20 @@ Name: weight, dtype: int64</code></pre>
 <p>Every pandas object carries an <strong>index</strong> of row labels. You can select by <em>label</em> or by <em>position</em>, and it pays to be explicit.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="880c9a85" class="cell" data-execution_count="4">
+<div id="5934e5e4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights.loc[<span class="st">"bob"</span>]     <span class="co"># by label</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>np.int64(83)</code></pre>
 </div>
 </div>
-<div id="dff991df" class="cell" data-execution_count="5">
+<div id="9e340411" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights.iloc[<span class="dv">1</span>]        <span class="co"># by position (0-based!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>np.int64(83)</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="7012acec" class="cell" data-execution_count="6">
+<div id="ce88af84" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights.loc[<span class="st">"alice"</span>:<span class="st">"bob"</span>]   <span class="co"># label slices are inclusive</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>alice    68
@@ -376,7 +376,7 @@ bob      83
 Name: weight, dtype: int64</code></pre>
 </div>
 </div>
-<div id="daa67213" class="cell" data-execution_count="7">
+<div id="e2cda057" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights.iloc[<span class="dv">0</span>:<span class="dv">2</span>]            <span class="co"># position slices are not</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>alice    68
@@ -396,7 +396,7 @@ Name: weight, dtype: int64</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>From a list (default integer index):</p>
-<div id="eb143e30" class="cell" data-execution_count="8">
+<div id="5abd0d2a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>pd.Series([<span class="dv">68</span>, <span class="dv">83</span>, <span class="dv">112</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>0     68
@@ -407,7 +407,7 @@ dtype: int64</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>From a dict (keys become labels):</p>
-<div id="c2e5ea40" class="cell" data-execution_count="9">
+<div id="0ae17bcf" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>heights <span class="op">=</span> pd.Series({<span class="st">"alice"</span>: <span class="dv">172</span>, <span class="st">"bob"</span>: <span class="dv">181</span>,</span>
 <span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"charles"</span>: <span class="dv">185</span>, <span class="st">"darwin"</span>: <span class="dv">178</span>},</span>
 <span id="cb15-3"><a href="" aria-hidden="true" tabindex="-1"></a>                    name<span class="op">=</span><span class="st">"height"</span>)</span>
@@ -426,7 +426,7 @@ Name: height, dtype: int64</code></pre>
 <h2>Selecting and filtering in Series</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="b0310421" class="cell" data-execution_count="10">
+<div id="c082d62f" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights[[<span class="st">"bob"</span>, <span class="st">"charles"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>bob         83
@@ -434,7 +434,7 @@ charles    112
 Name: weight, dtype: int64</code></pre>
 </div>
 </div>
-<div id="1a50b303" class="cell" data-execution_count="11">
+<div id="031fce0f" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights.iloc[[<span class="dv">0</span>, <span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>alice       68
@@ -444,7 +444,7 @@ Name: weight, dtype: int64</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>A condition gives a boolean Series, which filters:</p>
-<div id="9f26561f" class="cell" data-execution_count="12">
+<div id="2c11caf7" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights <span class="op">&gt;</span> <span class="dv">70</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>alice      False
@@ -453,7 +453,7 @@ charles     True
 Name: weight, dtype: bool</code></pre>
 </div>
 </div>
-<div id="1255c28b" class="cell" data-execution_count="13">
+<div id="bf9df924" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights[weights <span class="op">&gt;</span> <span class="dv">70</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>bob         83
@@ -468,7 +468,7 @@ Name: weight, dtype: int64</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Elementwise maths and <strong>broadcasting</strong> of scalars:</p>
-<div id="bcea35fc" class="cell" data-execution_count="14">
+<div id="8582a103" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights <span class="op">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>alice       73
@@ -477,7 +477,7 @@ charles    117
 Name: weight, dtype: int64</code></pre>
 </div>
 </div>
-<div id="c48a11c3" class="cell" data-execution_count="15">
+<div id="d0d5a1fa" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.log(weights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>alice      4.219508
@@ -488,7 +488,7 @@ Name: weight, dtype: float64</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Two Series are <strong>aligned on their index</strong> first. Labels present on one side only become <code>NaN</code>:</p>
-<div id="fee97de4" class="cell" data-execution_count="16">
+<div id="1ec60c81" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights <span class="op">/</span> (heights <span class="op">/</span> <span class="dv">100</span>) <span class="op">**</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>alice      22.985398
@@ -502,7 +502,7 @@ dtype: float64</code></pre>
 </section>
 <section id="plotting-a-series" class="slide level2">
 <h2>Plotting a Series</h2>
-<div id="2bfa0827" class="cell" data-execution_count="17">
+<div id="4242d65e" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a>weights.plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Weight (kg)"</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="fl">3.2</span>))</span>
 <span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -519,7 +519,7 @@ dtype: float64</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>From a dict of lists:</p>
-<div id="37177565" class="cell" data-execution_count="18">
+<div id="86834b87" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
 <span id="cb32-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight"</span>:    [<span class="dv">68</span>, <span class="dv">83</span>, <span class="dv">112</span>],</span>
 <span id="cb32-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"birthyear"</span>: [<span class="dv">1985</span>, <span class="dv">1984</span>, <span class="dv">1992</span>],</span>
@@ -572,7 +572,7 @@ dtype: float64</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>From a dict of Series — aligned on their index, gaps become <code>NaN</code>:</p>
-<div id="33ed5681" class="cell" data-execution_count="19">
+<div id="87c83236" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
 <span id="cb33-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight"</span>:   pd.Series([<span class="dv">68</span>, <span class="dv">83</span>], index<span class="op">=</span>[<span class="st">"alice"</span>, <span class="st">"bob"</span>]),</span>
 <span id="cb33-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"children"</span>: pd.Series([<span class="dv">3</span>, <span class="dv">0</span>], index<span class="op">=</span>[<span class="st">"bob"</span>, <span class="st">"charles"</span>]),</span>
@@ -629,7 +629,7 @@ dtype: float64</code></pre>
 <h2>Selecting and filtering in DataFrames</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="6386741b" class="cell" data-execution_count="20">
+<div id="d6a4332a" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a>people[<span class="st">"hobby"</span>]              <span class="co"># one column -&gt; Series</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>alice       Biking
@@ -638,7 +638,7 @@ charles        NaN
 Name: hobby, dtype: str</code></pre>
 </div>
 </div>
-<div id="e5380588" class="cell" data-execution_count="21">
+<div id="0f224366" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.loc[<span class="st">"bob"</span>]            <span class="co"># one row -&gt; Series</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>weight         83
@@ -648,13 +648,13 @@ Name: bob, dtype: object</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="25e11bdf" class="cell" data-execution_count="22">
+<div id="15434363" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.loc[<span class="st">"bob"</span>, <span class="st">"hobby"</span>]   <span class="co"># row and column</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>'Dancing'</code></pre>
 </div>
 </div>
-<div id="4b72853b" class="cell" data-execution_count="23">
+<div id="d51cce86" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a>people[people[<span class="st">"weight"</span>] <span class="op">&gt;</span> <span class="dv">70</span>]   <span class="co"># boolean mask</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
@@ -706,7 +706,7 @@ Name: bob, dtype: object</code></pre>
 <h2>Transposing and methods</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="223a0dc3" class="cell" data-execution_count="24">
+<div id="05d55a4f" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.T</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
@@ -760,7 +760,7 @@ Name: bob, dtype: object</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Functions live <em>on</em> the object: <code>df.mean()</code>, not <code>mean(df)</code>.</p>
-<div id="d14f8b63" class="cell" data-execution_count="25">
+<div id="cb5a94dd" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.mean(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>weight     87.666667
@@ -768,7 +768,7 @@ height    179.333333
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="307a2da9" class="cell" data-execution_count="26">
+<div id="e463a5e0" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="" aria-hidden="true" tabindex="-1"></a>people[<span class="st">"hobby"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>hobby
@@ -784,7 +784,7 @@ Name: count, dtype: int64</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Treat it like a dict:</p>
-<div id="a7cdd1da" class="cell" data-execution_count="27">
+<div id="906c0b43" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="" aria-hidden="true" tabindex="-1"></a>people[<span class="st">"age"</span>] <span class="op">=</span> <span class="dv">2026</span> <span class="op">-</span> pd.Series([<span class="dv">1985</span>, <span class="dv">1984</span>, <span class="dv">1992</span>],</span>
 <span id="cb46-2"><a href="" aria-hidden="true" tabindex="-1"></a>                                 index<span class="op">=</span>people.index)</span>
 <span id="cb46-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> people[<span class="st">"hobby"</span>]</span>
@@ -841,7 +841,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><code>assign()</code> returns a <strong>new</strong> DataFrame; a <code>lambda</code> sees the intermediate result, so calls chain:</p>
-<div id="d423844b" class="cell" data-execution_count="28">
+<div id="2e16a65b" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="" aria-hidden="true" tabindex="-1"></a>(people</span>
 <span id="cb47-2"><a href="" aria-hidden="true" tabindex="-1"></a>   .assign(bmi<span class="op">=</span><span class="kw">lambda</span> df: df[<span class="st">"weight"</span>] <span class="op">/</span> (df[<span class="st">"height"</span>] <span class="op">/</span> <span class="dv">100</span>) <span class="op">**</span> <span class="dv">2</span>)</span>
 <span id="cb47-3"><a href="" aria-hidden="true" tabindex="-1"></a>   .assign(overweight<span class="op">=</span><span class="kw">lambda</span> df: df[<span class="st">"bmi"</span>] <span class="op">&gt;</span> <span class="dv">25</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -925,7 +925,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="loading-data-from-csv" class="slide level2">
 <h2>Loading data from CSV</h2>
-<div id="9fc617b1" class="cell" data-execution_count="29">
+<div id="a3be761e" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="" aria-hidden="true" tabindex="-1"></a>col_names <span class="op">=</span> [<span class="st">"ID"</span>, <span class="st">"Diagnosis"</span>] <span class="op">+</span> [</span>
 <span id="cb48-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>m<span class="sc">}{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb48-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> m <span class="kw">in</span> (<span class="st">"radius"</span>, <span class="st">"texture"</span>, <span class="st">"perimeter"</span>, <span class="st">"area"</span>, <span class="st">"smoothness"</span>, <span class="st">"compactness"</span>,</span>
@@ -1050,7 +1050,7 @@ Name: count, dtype: int64</code></pre>
 <h2>Handling missing data</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="390dcccb" class="cell" data-execution_count="30">
+<div id="2fa3242b" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="" aria-hidden="true" tabindex="-1"></a>wdbc.isnull().<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>texture1           1
@@ -1060,7 +1060,7 @@ concave_points1    1
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="8b0f0214" class="cell" data-execution_count="31">
+<div id="6472b007" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> wdbc.dropna().drop_duplicates()</span>
 <span id="cb51-2"><a href="" aria-hidden="true" tabindex="-1"></a>wdbc.shape, clean.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -1069,7 +1069,7 @@ dtype: int64</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Fill instead of drop, one column at a time:</p>
-<div id="8798750e" class="cell" data-execution_count="32">
+<div id="4e50d7ac" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="" aria-hidden="true" tabindex="-1"></a>wdbc[<span class="st">"texture1"</span>] <span class="op">=</span> wdbc[<span class="st">"texture1"</span>].fillna(wdbc[<span class="st">"texture1"</span>].mean())</span>
 <span id="cb53-2"><a href="" aria-hidden="true" tabindex="-1"></a>wdbc[<span class="st">"texture1"</span>].isnull().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1083,13 +1083,13 @@ dtype: int64</code></pre>
 <h2>Overview functions</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="475ecf66" class="cell" data-execution_count="33">
+<div id="cff0c805" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>(567, 32)</code></pre>
 </div>
 </div>
-<div id="01c40a46" class="cell" data-execution_count="34">
+<div id="ae71fc87" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean[<span class="st">"Diagnosis"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>Diagnosis
@@ -1098,7 +1098,7 @@ M    210
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="125e9387" class="cell" data-execution_count="35">
+<div id="283c92ea" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean.dtypes.head(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>ID             int64
@@ -1109,7 +1109,7 @@ dtype: object</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="2c6cdb6a" class="cell" data-execution_count="36">
+<div id="a5ede520" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean[[<span class="st">"radius1"</span>, <span class="st">"texture1"</span>, <span class="st">"area1"</span>]].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <div>
@@ -1199,7 +1199,7 @@ dtype: object</code></pre>
 <p>Split by the values of a column, apply a summary to each group, combine the results.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="5227378b" class="cell" data-execution_count="37">
+<div id="f5abfdae" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean.groupby(<span class="st">"Diagnosis"</span>)[<span class="st">"radius1"</span>].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Diagnosis
@@ -1209,7 +1209,7 @@ Name: radius1, dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="06b9dcdf" class="cell" data-execution_count="38">
+<div id="0fa7c91f" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean.groupby(<span class="st">"Diagnosis"</span>)[[<span class="st">"radius1"</span>, <span class="st">"area1"</span>]].agg([<span class="st">"mean"</span>, <span class="st">"std"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
@@ -1278,7 +1278,7 @@ Name: radius1, dtype: float64</code></pre>
 </section>
 <section id="saving-to-files" class="slide level2">
 <h2>Saving to files</h2>
-<div id="ffaaa14b" class="cell" data-execution_count="39">
+<div id="946ea7d7" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="" aria-hidden="true" tabindex="-1"></a>clean.to_csv(<span class="st">"data/cleaned_wdbc.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb65-2"><a href="" aria-hidden="true" tabindex="-1"></a>clean.to_excel(<span class="st">"data/cleaned_wdbc.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb65-3"><a href="" aria-hidden="true" tabindex="-1"></a>clean.to_parquet(<span class="st">"data/cleaned_wdbc.parquet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1287,7 +1287,7 @@ Name: radius1, dtype: float64</code></pre>
 </section>
 <section id="plotting-data" class="slide level2">
 <h2>Plotting data</h2>
-<div id="1eda62fc" class="cell" data-execution_count="40">
+<div id="1c65bc6e" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="" aria-hidden="true" tabindex="-1"></a>colours <span class="op">=</span> clean[<span class="st">"Diagnosis"</span>].<span class="bu">map</span>({<span class="st">"B"</span>: <span class="st">"tab:blue"</span>, <span class="st">"M"</span>: <span class="st">"tab:red"</span>})</span>
 <span id="cb66-2"><a href="" aria-hidden="true" tabindex="-1"></a>clean.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"radius1"</span>, y<span class="op">=</span><span class="st">"texture1"</span>, c<span class="op">=</span>colours, alpha<span class="op">=</span><span class="fl">0.5</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="fl">2.6</span>))</span>
 <span id="cb66-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1311,7 +1311,7 @@ Name: radius1, dtype: float64</code></pre>
 <p>Write the formula as a string; refer to columns by name; <code>@</code> reaches Python variables.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="2ad80397" class="cell" data-execution_count="42">
+<div id="9faf523e" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.<span class="bu">eval</span>(<span class="st">"bmi = weight / (height / 100) ** 2"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb67-2"><a href="" aria-hidden="true" tabindex="-1"></a>people</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
@@ -1377,7 +1377,7 @@ Name: radius1, dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="d2fb8202" class="cell" data-execution_count="43">
+<div id="68b750c1" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb68-2"><a href="" aria-hidden="true" tabindex="-1"></a>people.query(<span class="st">"age &gt; 40 and bmi &lt; @threshold"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -1452,7 +1452,7 @@ Name: radius1, dtype: float64</code></pre>
 <h2>Sorting a DataFrame</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="6c656150" class="cell" data-execution_count="44">
+<div id="06c224d1" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.sort_index(ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <div>
@@ -1517,7 +1517,7 @@ Name: radius1, dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="3afacd93" class="cell" data-execution_count="45">
+<div id="aab35b17" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="" aria-hidden="true" tabindex="-1"></a>people.sort_values(by<span class="op">=</span><span class="st">"age"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <div>
@@ -1586,14 +1586,14 @@ Name: radius1, dtype: float64</code></pre>
 </section>
 <section id="operations-on-dataframes" class="slide level2">
 <h2>Operations on DataFrames</h2>
-<div id="e48636cc" class="cell" data-execution_count="46">
+<div id="8981837c" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> pd.DataFrame([[<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>], [<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">2</span>], [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">10</span>]],</span>
 <span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a>                      columns<span class="op">=</span>[<span class="st">"sep"</span>, <span class="st">"oct"</span>, <span class="st">"nov"</span>],</span>
 <span id="cb71-3"><a href="" aria-hidden="true" tabindex="-1"></a>                      index<span class="op">=</span>[<span class="st">"alice"</span>, <span class="st">"bob"</span>, <span class="st">"charles"</span>, <span class="st">"darwin"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="columns">
 <div class="column" style="width:33%;">
-<div id="a2127048" class="cell" data-execution_count="47">
+<div id="c51ab2b8" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="" aria-hidden="true" tabindex="-1"></a>scores <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <div>
@@ -1652,7 +1652,7 @@ Name: radius1, dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:33%;">
-<div id="4d0f676b" class="cell" data-execution_count="48">
+<div id="a9c17e37" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="" aria-hidden="true" tabindex="-1"></a>(scores <span class="op">&gt;</span> <span class="dv">5</span>).<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>alice       True
@@ -1663,7 +1663,7 @@ dtype: bool</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:33%;">
-<div id="a97bd3f1" class="cell" data-execution_count="49">
+<div id="32dc67ff" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="" aria-hidden="true" tabindex="-1"></a>scores <span class="op">-</span> scores.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <div>
@@ -1728,7 +1728,7 @@ dtype: bool</code></pre>
 <p>pandas aligns on <strong>both</strong> row labels and column names:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="1f9eff20" class="cell" data-execution_count="50">
+<div id="b2463399" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="" aria-hidden="true" tabindex="-1"></a>bonus <span class="op">=</span> pd.DataFrame([[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">3</span>, <span class="dv">0</span>]],</span>
 <span id="cb76-2"><a href="" aria-hidden="true" tabindex="-1"></a>                     columns<span class="op">=</span>[<span class="st">"oct"</span>, <span class="st">"dec"</span>],</span>
 <span id="cb76-3"><a href="" aria-hidden="true" tabindex="-1"></a>                     index<span class="op">=</span>[<span class="st">"bob"</span>, <span class="st">"eugene"</span>, <span class="st">"darwin"</span>])</span>
@@ -1803,7 +1803,7 @@ dtype: bool</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Treat missing as zero with <code>add(..., fill_value=0)</code>:</p>
-<div id="3b7f3b3a" class="cell" data-execution_count="51">
+<div id="8cd73f86" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="" aria-hidden="true" tabindex="-1"></a>scores.add(bonus, fill_value<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <div>
@@ -1877,7 +1877,7 @@ dtype: bool</code></pre>
 </section>
 <section id="plotting-a-dataframe" class="slide level2">
 <h2>Plotting a DataFrame</h2>
-<div id="12d817c2" class="cell" data-execution_count="52">
+<div id="81bdf736" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="" aria-hidden="true" tabindex="-1"></a>scores.T.plot(title<span class="op">=</span><span class="st">"Monthly scores"</span>, marker<span class="op">=</span><span class="st">"o"</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="fl">3.2</span>))</span>
 <span id="cb78-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1891,7 +1891,7 @@ dtype: bool</code></pre>
 </section>
 <section id="combining-dataframes-sql-like-joins" class="slide level2">
 <h2>Combining DataFrames: SQL-like joins</h2>
-<div id="41f8236f" class="cell" data-execution_count="53">
+<div id="9e5e63fb" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="" aria-hidden="true" tabindex="-1"></a>residents <span class="op">=</span> pd.DataFrame({<span class="st">"name"</span>: [<span class="st">"alice"</span>, <span class="st">"bob"</span>, <span class="st">"charles"</span>],</span>
 <span id="cb79-2"><a href="" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"city"</span>: [<span class="st">"Melbourne"</span>, <span class="st">"Sydney"</span>, <span class="st">"Perth"</span>]})</span>
 <span id="cb79-3"><a href="" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> pd.DataFrame({<span class="st">"city"</span>: [<span class="st">"Melbourne"</span>, <span class="st">"Sydney"</span>, <span class="st">"Brisbane"</span>],</span>
@@ -1899,7 +1899,7 @@ dtype: bool</code></pre>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="59538a7f" class="cell" data-execution_count="54">
+<div id="5add72be" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="" aria-hidden="true" tabindex="-1"></a>pd.merge(residents, cities, on<span class="op">=</span><span class="st">"city"</span>)          <span class="co"># inner</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <div>
@@ -1946,7 +1946,7 @@ dtype: bool</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="8af5802b" class="cell" data-execution_count="55">
+<div id="20b55a18" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="" aria-hidden="true" tabindex="-1"></a>pd.merge(residents, cities, on<span class="op">=</span><span class="st">"city"</span>, how<span class="op">=</span><span class="st">"outer"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <div>
@@ -2012,7 +2012,7 @@ dtype: bool</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Stack rows (aligned by column name):</p>
-<div id="d7b7d159" class="cell" data-execution_count="56">
+<div id="60e35b45" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="" aria-hidden="true" tabindex="-1"></a>new_people <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb82-2"><a href="" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"weight"</span>: [<span class="dv">95</span>], <span class="st">"height"</span>: [<span class="dv">178</span>], <span class="st">"age"</span>: [<span class="dv">48</span>]},</span>
 <span id="cb82-3"><a href="" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"darwin"</span>])</span>
@@ -2090,7 +2090,7 @@ dtype: bool</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Add columns (aligned by index) with <code>axis=1</code>:</p>
-<div id="913baf58" class="cell" data-execution_count="57">
+<div id="ad775ac5" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="" aria-hidden="true" tabindex="-1"></a>where <span class="op">=</span> residents.set_index(<span class="st">"name"</span>)</span>
 <span id="cb83-2"><a href="" aria-hidden="true" tabindex="-1"></a>pd.concat([people[[<span class="st">"age"</span>]], where], axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
