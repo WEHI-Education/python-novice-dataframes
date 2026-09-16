@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+$presentation-heading-color: #b35c00;
+$link-color: #0077b6;
+$code-block-font-size: 0.62em;
+$presentation-font-size-root: 34px;
+
+/*-- scss:rules --*/
+.reveal .slide-logo { max-height: 40px; }
+.reveal table { font-size: 0.62em; }
+.reveal .dataframe { margin: 0 auto; }
+.reveal .dataframe thead th { background: #e3f2fd; }
+.reveal .callout { font-size: 0.85em; }
+.reveal .cell-output pre { font-size: 0.62em; }
+.reveal .columns .column h3 { font-size: 1.1em; }
+.reveal ul, .reveal ol, .reveal p { font-size: 0.9em; }
+.reveal h2 { font-size: 1.35em; }
+.reveal .section-note { color: #555; font-size: 0.8em; }
+.reveal pre code { line-height: 1.35; }
+.reveal .columns .column code { font-size: 0.95em; }
+.lang-label {
+  display: inline-block; font-size: 0.7em; font-weight: bold; padding: 2px 8px;
+  border-radius: 4px; margin-bottom: 4px; color: #fff;
+}
+.lang-r { background: #276dc3; }
+.lang-py { background: #3776ab; }

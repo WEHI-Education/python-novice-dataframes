@@ -1,0 +1,718 @@
+---
+title: "Data Analysis with pandas"
+subtitle: "Series, DataFrames and real data"
+author: "WEHI Education"
+date: last-modified
+date-format: "MMMM YYYY"
+format: revealjs
+---
+
+```{python}
+#| echo: false
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+pd.set_option("display.max_rows", 8)
+pd.set_option("display.max_columns", 10)
+pd.set_option("display.width", 100)
+plt.style.use("ggplot")
+```
+
+## About this workshop
+
+::: {.columns}
+::: {.column width="55%"}
+A hands-on, 4-hour introduction to **pandas**, the Python library for tabular data.
+
+1. **Series and DataFrames** &mdash; the two core objects
+2. **Working with real data** &mdash; load, clean, summarise, save, plot
+3. **Advanced DataFrame operations** &mdash; expressions, sorting, alignment, joins
+
+Plus: **pandas for R users**, and what to reach for when pandas is not enough.
+:::
+::: {.column width="45%"}
+Follow along in the notebook:
+
+- Open `workshop/Pandas.ipynb` locally, or
+- click the **Open in Colab** badge at the top of the notebook.
+
+[github.com/WEHI-Education/python-novice-dataframes](https://github.com/WEHI-Education/python-novice-dataframes)
+:::
+:::
+
+## What is pandas?
+
+::: {.columns}
+::: {.column width="50%"}
+- The standard Python library for **tabular data**: rows and columns, like a spreadsheet or an R `data.frame`.
+- Built on NumPy arrays, so it is fast for numeric work.
+- Reads and writes CSV, Excel, JSON, parquet, SQL...
+- Plots via matplotlib, and integrates with seaborn, scikit-learn, statsmodels...
+
+```python
+import pandas as pd
+```
+:::
+::: {.column width="50%"}
+Two objects do almost all the work:
+
+| Object | Shape | R analogue |
+|---|---|---|
+| `Series` | 1-D, labelled | named vector |
+| `DataFrame` | 2-D table | `data.frame` / tibble |
+
+A `DataFrame` is a **dict of Series** that share the same row index.
+:::
+:::
+
+## Series and DataFrame
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+weights = pd.Series(
+    [68, 83, 112],
+    index=["alice", "bob", "charles"],
+    name="weight")
+weights
+```
+:::
+::: {.column width="50%"}
+```{python}
+people = pd.DataFrame({
+    "weight": [68, 83, 112],
+    "height": [172, 181, 185],
+    "hobby":  ["Biking", "Dancing", None],
+}, index=["alice", "bob", "charles"])
+people
+```
+:::
+:::
+
+Every column of a `DataFrame` is a `Series`, and every `Series` prints its `dtype` (and `Name`) at the bottom.
+
+## The index: labels vs positions
+
+Every pandas object carries an **index** of row labels. You can select by *label* or by *position*, and it pays to be explicit.
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+weights.loc["bob"]     # by label
+```
+```{python}
+weights.iloc[1]        # by position (0-based!)
+```
+:::
+::: {.column width="50%"}
+```{python}
+weights.loc["alice":"bob"]   # label slices are inclusive
+```
+```{python}
+weights.iloc[0:2]            # position slices are not
+```
+:::
+:::
+
+# Section 1: Series and DataFrames
+
+## Creating a Series
+
+::: {.columns}
+::: {.column width="50%"}
+From a list (default integer index):
+
+```{python}
+pd.Series([68, 83, 112])
+```
+:::
+::: {.column width="50%"}
+From a dict (keys become labels):
+
+```{python}
+heights = pd.Series({"alice": 172, "bob": 181,
+                     "charles": 185, "darwin": 178},
+                    name="height")
+heights
+```
+:::
+:::
+
+## Selecting and filtering in Series
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+weights[["bob", "charles"]]
+```
+```{python}
+weights.iloc[[0, 2]]
+```
+:::
+::: {.column width="50%"}
+A condition gives a boolean Series, which filters:
+
+```{python}
+weights > 70
+```
+```{python}
+weights[weights > 70]
+```
+:::
+:::
+
+## Operations on Series
+
+::: {.columns}
+::: {.column width="50%"}
+Elementwise maths and **broadcasting** of scalars:
+
+```{python}
+weights + 5
+```
+```{python}
+np.log(weights)
+```
+:::
+::: {.column width="50%"}
+Two Series are **aligned on their index** first. Labels present on one side only become `NaN`:
+
+```{python}
+weights / (heights / 100) ** 2
+```
+:::
+:::
+
+## Plotting a Series
+
+```{python}
+#| fig-align: center
+weights.plot(kind="bar", title="Weight (kg)", figsize=(6, 3.2))
+plt.show()
+```
+
+## Creating a DataFrame
+
+::: {.columns}
+::: {.column width="50%"}
+From a dict of lists:
+
+```{python}
+pd.DataFrame({
+    "weight":    [68, 83, 112],
+    "birthyear": [1985, 1984, 1992],
+}, index=["alice", "bob", "charles"])
+```
+:::
+::: {.column width="50%"}
+From a dict of Series &mdash; aligned on their index, gaps become `NaN`:
+
+```{python}
+pd.DataFrame({
+    "weight":   pd.Series([68, 83], index=["alice", "bob"]),
+    "children": pd.Series([3, 0], index=["bob", "charles"]),
+})
+```
+:::
+:::
+
+## Selecting and filtering in DataFrames
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+people["hobby"]              # one column -> Series
+```
+```{python}
+people.loc["bob"]            # one row -> Series
+```
+:::
+::: {.column width="50%"}
+```{python}
+people.loc["bob", "hobby"]   # row and column
+```
+```{python}
+people[people["weight"] > 70]   # boolean mask
+```
+:::
+:::
+
+## Transposing and methods
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+people.T
+```
+:::
+::: {.column width="50%"}
+Functions live *on* the object: `df.mean()`, not `mean(df)`.
+
+```{python}
+people.mean(numeric_only=True)
+```
+```{python}
+people["hobby"].value_counts()
+```
+:::
+:::
+
+## Adding, removing and assigning columns
+
+::: {.columns}
+::: {.column width="50%"}
+Treat it like a dict:
+
+```{python}
+people["age"] = 2026 - pd.Series([1985, 1984, 1992],
+                                 index=people.index)
+del people["hobby"]
+people
+```
+:::
+::: {.column width="50%"}
+`assign()` returns a **new** DataFrame; a `lambda` sees the intermediate result, so calls chain:
+
+```{python}
+(people
+   .assign(bmi=lambda df: df["weight"] / (df["height"] / 100) ** 2)
+   .assign(overweight=lambda df: df["bmi"] > 25))
+```
+:::
+:::
+
+::: {.callout-warning}
+`new = people` does **not** copy. Use `people.copy()`.
+:::
+
+# Section 2: Working with real data
+
+## Loading data from CSV
+
+```{python}
+col_names = ["ID", "Diagnosis"] + [
+    f"{m}{i}" for i in (1, 2, 3)
+    for m in ("radius", "texture", "perimeter", "area", "smoothness", "compactness",
+              "concavity", "concave_points", "symmetry", "fractal_dimension")]
+
+wdbc = pd.read_csv("../workshop/data/wdbc.data.csv", header=None, names=col_names)
+wdbc.head()
+```
+
+The file has no header row, so we pass `header=None` and supply `names=`. `read_csv` also accepts URLs.
+
+## Handling missing data
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+wdbc.isnull().sum().sort_values(ascending=False).head(4)
+```
+```{python}
+clean = wdbc.dropna().drop_duplicates()
+wdbc.shape, clean.shape
+```
+:::
+::: {.column width="50%"}
+Fill instead of drop, one column at a time:
+
+```{python}
+wdbc["texture1"] = wdbc["texture1"].fillna(wdbc["texture1"].mean())
+wdbc["texture1"].isnull().sum()
+```
+
+Assign back with `=`. The chained `df[col].fillna(x, inplace=True)` pattern is deprecated.
+:::
+:::
+
+## Overview functions
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+clean.shape
+```
+```{python}
+clean["Diagnosis"].value_counts()
+```
+```{python}
+clean.dtypes.head(4)
+```
+:::
+::: {.column width="50%"}
+```{python}
+clean[["radius1", "texture1", "area1"]].describe()
+```
+:::
+:::
+
+Also: `head()`, `tail()`, `info()`.
+
+## Aggregating with groupby
+
+Split by the values of a column, apply a summary to each group, combine the results.
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+clean.groupby("Diagnosis")["radius1"].mean()
+```
+:::
+::: {.column width="50%"}
+```{python}
+clean.groupby("Diagnosis")[["radius1", "area1"]].agg(["mean", "std"])
+```
+:::
+:::
+
+## Saving to files
+
+```{python}
+#| eval: false
+clean.to_csv("data/cleaned_wdbc.csv", index=False)
+clean.to_excel("data/cleaned_wdbc.xlsx", index=False)
+clean.to_parquet("data/cleaned_wdbc.parquet")
+```
+
+Every reader has a matching writer: `read_csv` / `to_csv`, `read_excel` / `to_excel`, `read_json` / `to_json`, `read_parquet` / `to_parquet`, `read_sql` / `to_sql`.
+
+## Plotting data
+
+```{python}
+#| fig-align: center
+colours = clean["Diagnosis"].map({"B": "tab:blue", "M": "tab:red"})
+clean.plot(kind="scatter", x="radius1", y="texture1", c=colours, alpha=0.5, figsize=(6, 2.6))
+plt.show()
+```
+
+For richer statistical graphics use **seaborn**, which understands DataFrames directly (see the notebook).
+
+# Section 3: Advanced DataFrame operations
+
+```{python}
+#| echo: false
+people = pd.DataFrame({
+    "weight":  [68, 83, 112],
+    "height":  [172, 181, 185],
+    "hobby":   ["Biking", "Dancing", np.nan],
+    "age":     [41, 42, 34],
+    "pets":    [np.nan, 0.0, 5.0],
+}, index=["alice", "bob", "charles"])
+```
+
+## Evaluating an expression and querying
+
+Write the formula as a string; refer to columns by name; `@` reaches Python variables.
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+people.eval("bmi = weight / (height / 100) ** 2", inplace=True)
+people
+```
+:::
+::: {.column width="50%"}
+```{python}
+threshold = 30
+people.query("age > 40 and bmi < @threshold")
+```
+:::
+:::
+
+::: {.callout-note}
+On Google Colab add `engine="python"` to `eval` and `query` calls.
+:::
+
+## Sorting a DataFrame
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+people.sort_index(ascending=False)
+```
+:::
+::: {.column width="50%"}
+```{python}
+people.sort_values(by="age")
+```
+:::
+:::
+
+Both return a sorted copy; pass `inplace=True` to modify in place. `sort_index(axis=1)` sorts the columns.
+
+## Operations on DataFrames
+
+```{python}
+scores = pd.DataFrame([[8, 8, 9], [10, 9, 9], [4, 8, 2], [9, 10, 10]],
+                      columns=["sep", "oct", "nov"],
+                      index=["alice", "bob", "charles", "darwin"])
+```
+
+::: {.columns}
+::: {.column width="33%"}
+```{python}
+scores + 1
+```
+:::
+::: {.column width="33%"}
+```{python}
+(scores > 5).all(axis=1)
+```
+:::
+::: {.column width="33%"}
+```{python}
+scores - scores.mean()
+```
+:::
+:::
+
+## Automatic alignment for DataFrames
+
+pandas aligns on **both** row labels and column names:
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+bonus = pd.DataFrame([[0, 2], [1, 0], [3, 0]],
+                     columns=["oct", "dec"],
+                     index=["bob", "eugene", "darwin"])
+scores + bonus
+```
+:::
+::: {.column width="50%"}
+Treat missing as zero with `add(..., fill_value=0)`:
+
+```{python}
+scores.add(bonus, fill_value=0)
+```
+:::
+:::
+
+## Plotting a DataFrame
+
+```{python}
+#| fig-align: center
+scores.T.plot(title="Monthly scores", marker="o", figsize=(6, 3.2))
+plt.show()
+```
+
+## Combining DataFrames: SQL-like joins
+
+```{python}
+residents = pd.DataFrame({"name": ["alice", "bob", "charles"],
+                          "city": ["Melbourne", "Sydney", "Perth"]})
+cities = pd.DataFrame({"city": ["Melbourne", "Sydney", "Brisbane"],
+                       "lat": [-37.81, -33.87, -27.47]})
+```
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+pd.merge(residents, cities, on="city")          # inner
+```
+:::
+::: {.column width="50%"}
+```{python}
+pd.merge(residents, cities, on="city", how="outer")
+```
+:::
+:::
+
+Also `how="left"`, `how="right"`, `left_on=`/`right_on=`, `left_index=`/`right_index=`.
+
+## Combining DataFrames: concatenation
+
+::: {.columns}
+::: {.column width="50%"}
+Stack rows (aligned by column name):
+
+```{python}
+new_people = pd.DataFrame(
+    {"weight": [95], "height": [178], "age": [48]},
+    index=["darwin"])
+pd.concat([people, new_people])
+```
+:::
+::: {.column width="50%"}
+Add columns (aligned by index) with `axis=1`:
+
+```{python}
+where = residents.set_index("name")
+pd.concat([people[["age"]], where], axis=1)
+```
+:::
+:::
+
+# pandas for R users
+
+## Same ideas, different reflexes
+
+::: {.columns}
+::: {.column width="50%"}
+<span class="lang-label lang-r">R</span>
+
+```r
+df[1, ]                 # first row
+new_df <- df            # independent copy
+mean(df$a)              # function(object)
+df$a                    # a vector
+```
+:::
+::: {.column width="50%"}
+<span class="lang-label lang-py">pandas</span>
+
+```python
+df.iloc[0]              # 0-based positions
+new_df = df.copy()      # `new_df = df` is an alias!
+df["a"].mean()          # object.method()
+df["a"]                 # a Series, with an index
+```
+:::
+:::
+
+- **Indexing starts at 0**, and label slices are inclusive while position slices are not.
+- **Assignment does not copy.** `new_df = df` makes a second name for the same object.
+- **Methods, not functions.** There is no `mean(df)`; call `df.mean()`.
+- **A column is a Series**, not a bare vector: it carries an index and a dtype.
+
+## Creating and reading data
+
+::: {.columns}
+::: {.column width="50%"}
+<span class="lang-label lang-r">R</span>
+
+```r
+df <- data.frame(a = c(1, 2), b = c(3, 4))
+df <- read.csv("file.csv")
+
+dim(df); head(df); summary(df)
+colnames(df)
+```
+:::
+::: {.column width="50%"}
+<span class="lang-label lang-py">pandas</span>
+
+```python
+df = pd.DataFrame({"a": [1, 2], "b": [3, 4]})
+df = pd.read_csv("file.csv")
+
+df.shape; df.head(); df.describe()
+df.columns
+```
+:::
+:::
+
+pandas wants a **dict of lists** (`{}` of `[]`) where R takes named vector arguments.
+
+## Selecting and filtering
+
+| R | pandas |
+|---|---|
+| `df[rows, cols]` | `df.loc[rows, cols]` (labels) / `df.iloc[...]` (positions) |
+| `df$a`, `df[["a"]]` | `df["a"]`, `df.a` |
+| `df[, c("a", "c")]`, `select(df, a, c)` | `df[["a", "c"]]` |
+| `select(df, a:c)` | `df.loc[:, "a":"c"]` |
+| `df[df$a > 1, ]` | `df[df["a"] > 1]`, `df.loc[df.a > 1]` |
+| `subset(df, a <= b)`, `filter(df, a <= b)` | `df.query("a <= b")` |
+| `s %in% c(2, 4)` | `s.isin([2, 4])` |
+| `with(df, a + b)` | `df.eval("a + b")` |
+| `distinct(select(df, a))` | `df[["a"]].drop_duplicates()` |
+| `sample_n(df, 10)` | `df.sample(n=10)` |
+
+`query()` is the closest thing to dplyr's `filter()`; external variables are referenced with `@var`.
+
+## Transforming, sorting and grouping
+
+| R (dplyr) | pandas |
+|---|---|
+| `mutate(df, c = a - b)` | `df.assign(c=df["a"] - df["b"])` |
+| `rename(df, col_one = col1)` | `df.rename(columns={"col1": "col_one"})` |
+| `arrange(df, col1, col2)` | `df.sort_values(["col1", "col2"])` |
+| `arrange(df, desc(col1))` | `df.sort_values("col1", ascending=False)` |
+| `group_by(df, cat) \|> summarise(m = mean(a))` | `df.groupby("cat")["a"].mean()` |
+| `group_by(df, cat) \|> summarise(total = sum(a))` | `df.groupby("cat")["a"].sum()` |
+| `aggregate(...)`, `tapply(...)` | `df.groupby([...]).agg(...)`, `df.pivot_table(...)` |
+| `melt(df, id = c("k"))` | `pd.melt(df, id_vars=["k"])` |
+| `dcast(df, a ~ b, sum)` | `df.pivot_table(values=..., index="a", columns="b", aggfunc="sum")` |
+
+Grouping returns the grouping column as the **row index** of the result.
+
+## Pipes and method chaining
+
+::: {.columns}
+::: {.column width="50%"}
+<span class="lang-label lang-r">R</span>
+
+```r
+df |>
+  filter(a > 1) |>
+  group_by(cat) |>
+  summarise(mean_b = mean(b))
+```
+:::
+::: {.column width="50%"}
+<span class="lang-label lang-py">pandas</span>
+
+```python
+(df
+   .query("a > 1")
+   .groupby("cat")["b"]
+   .mean())
+```
+:::
+:::
+
+- The `|>` pipe becomes a chain of `.method()` calls. Wrap the chain in `( )` to split it over lines.
+- Most methods return a **new** object, like dplyr verbs. `inplace=True` is the exception, not the rule.
+- `df.plot()` is the quick equivalent of base `plot()`; **seaborn** is the closest thing to ggplot2.
+
+## Beyond pandas: when the data gets big {.smaller}
+
+::: {.columns}
+::: {.column width="33%"}
+### Polars
+
+A newer DataFrame library written in Rust.
+
+- Uses all your CPU cores by default
+- Lazy evaluation optimises whole queries
+- Usually 5-20x faster than pandas
+- Familiar verbs: `filter`, `group_by`
+
+**Use when** data fits (or nearly fits) in RAM and you want speed without changing tools.
+:::
+::: {.column width="33%"}
+### DuckDB
+
+An in-process analytical SQL database.
+
+- SQL over CSV, parquet or DataFrames
+- No server to install or manage
+- Handles data larger than memory
+
+**Use when** you think in SQL, or need to join many large files.
+:::
+::: {.column width="33%"}
+### Dask
+
+Parallel pandas across cores or a cluster.
+
+- Splits a big table into many pandas DataFrames
+- Same API, then call `.compute()`
+- Scales out to HPC and cloud clusters
+
+**Use when** you already have pandas code and the data will not fit on one machine.
+:::
+:::
+
+All three hand results back to pandas (`.to_pandas()`, `.df()`, `.compute()`), so they slot into an existing workflow.
+
+## Resources
+
+- Workshop notebook and data: [github.com/WEHI-Education/python-novice-dataframes](https://github.com/WEHI-Education/python-novice-dataframes)
+- [pandas user guide](https://pandas.pydata.org/docs/user_guide/index.html) and [pandas cheat sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
+- [Comparison with R / R libraries](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_r.html) (pandas docs)
+- Rebecca Barter, [From R to Python](https://rebeccabarter.com/blog/2023-09-11-from_r_to_python)
+- Wes McKinney, *Python for Data Analysis* (free online at [wesmckinney.com/book](https://wesmckinney.com/book/))
+- [Polars](https://pola.rs/) &middot; [DuckDB](https://duckdb.org/) &middot; [Dask](https://www.dask.org/)

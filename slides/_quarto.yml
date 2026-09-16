@@ -1,0 +1,30 @@
+project:
+  type: default
+  output-dir: _site
+  render:
+    - index.qmd
+
+jupyter: python3
+
+execute:
+  echo: true
+  warning: false
+  error: false
+  freeze: false
+
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    footer: "WEHI Education &mdash; Data Analysis with pandas"
+    code-overflow: scroll
+    code-line-numbers: false
+    code-copy: true
+    fig-width: 6
+    fig-height: 3.2
+    fig-dpi: 150
+    width: 1280
+    height: 720
+    preview-links: auto
+    embed-resources: false
+    toc: false

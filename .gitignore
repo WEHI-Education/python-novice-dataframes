@@ -1,2 +1,14 @@
 # Mac stuff
 .DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+__pycache__/
+
+# Files written by the workshop notebook
+workshop/data/cleaned_wdbc.csv
+
+# Quarto
+_site/
+.quarto/
+slides/_site/

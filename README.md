@@ -4,6 +4,20 @@
 
 <br>
 
+# Data Analysis with Pandas
+
+Materials for a four-hour introductory workshop on [pandas](https://pandas.pydata.org/) DataFrames.
+
+**Slides:** https://wehi-education.github.io/python-novice-dataframes/
+
+## What's in this repo
+
+- `workshop/Pandas.ipynb` - the workshop notebook, in three sections: Series and DataFrames, working with real data, and advanced DataFrame operations. Challenges are marked in green boxes. It runs locally or in Google Colab (badge above).
+- `workshop/data/` - the Breast Cancer Wisconsin (Diagnostic) dataset used in Section 2, with a few deliberate errors to clean up.
+- `workshop/resources/` - the pandas cheat sheet and the pandas docs "Comparison with R" page as PDFs.
+- `slides/` - the accompanying [Quarto](https://quarto.org/) reveal.js slide deck. It is rendered and published to GitHub Pages by the workflow in `.github/workflows/publish-slides.yml` on every push to `main`. To preview locally: `quarto render slides` (needs pandas and matplotlib on the Python that Quarto uses).
+- `.devnotes/exercise-solutions.md` - possible solutions for the challenges.
+
 # Working locally
 
 ## On Mac or Linux machine

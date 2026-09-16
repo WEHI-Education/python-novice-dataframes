@@ -8,6 +8,7 @@ dependencies:
   - pip:
     - matplotlib
     - numpy
+    - numexpr
     - pandas
     - scipy
     - seaborn

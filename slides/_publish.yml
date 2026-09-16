@@ -1,0 +1,5 @@
+- source: project
+  provider: gh-pages
+  publish:
+    - id: gh-pages
+      url: https://wehi-education.github.io/python-novice-dataframes/
